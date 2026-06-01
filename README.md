@@ -2,6 +2,9 @@
 
 A full-stack application for managing products, customers, orders, and inventory. Built with React, FastAPI, and PostgreSQL, packaged with Docker for local development and deployed on managed cloud services.
 
+### 🎥 Demo Video
+
+[▶️ Watch Project Walkthrough](demo/project-demo.mov)
 ## Live application
 
 | Service | URL |
