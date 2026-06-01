@@ -10,7 +10,7 @@ A full-stack application for managing products, customers, orders, and inventory
 | REST API | https://inventory-api-latest-v171.onrender.com |
 | API documentation | https://inventory-api-latest-v171.onrender.com/docs |
 | Container registry | https://hub.docker.com/r/ishitamax/inventory-api |
-| Source repository | https://github.com/Ishitachauhann/inventary-order_and_managemnet_system- |
+| Source repository | https://github.com/Ishitachauhann/inventory-os-assignment- |
 
 ## Features
 
