@@ -56,7 +56,7 @@ Local development uses Docker Compose to run the frontend, API, and database as 
 ### Run locally
 
 ```bash
-git clone https://github.com/Ishitachauhann/inventary-order_and_managemnet_system-.git
+git clone https://github.com/Ishitachauhann/inventory-os-assignment-.git
 cd inventary-order_and_managemnet_system-
 
 cp .env.example .env
