@@ -55,6 +55,17 @@ app.include_router(orders.router)
 app.include_router(dashboard.router)
 
 
+@app.get("/")
+def root():
+    return {
+        "service": "Inventory & Order Management API",
+        "version": "1.0.0",
+        "status": "running",
+        "docs": "/docs",
+        "health": "/health",
+    }
+
+
 @app.get("/health")
 def health_check():
     return {"status": "ok"}
