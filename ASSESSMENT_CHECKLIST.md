@@ -97,7 +97,7 @@
 | Deliverable | Status | Action |
 |-------------|--------|--------|
 | GitHub repository link | ⚠️ Partial | Code committed locally; **push to GitHub** and add remote |
-| Docker Hub backend image | ❌ Pending | `docker build` + `docker push` (see README) |
+| Docker Hub backend image | ✅ Done | https://hub.docker.com/r/ishitamax/inventory-api |
 | Live frontend URL (Vercel/Netlify) | ❌ Pending | Deploy `frontend/` with `VITE_API_URL` |
 | Live backend URL (Render/Railway/Fly.io) | ❌ Pending | Deploy with `DATABASE_URL` + `CORS_ORIGINS` |
 

@@ -15,7 +15,7 @@ Publish the **backend** API image to Docker Hub for your assignment submission.
 
 Your submission link will look like:
 
-`https://hub.docker.com/r/YOUR_DOCKERHUB_USERNAME/inventory-api`
+https://hub.docker.com/r/ishitamax/inventory-api
 
 ---
 
@@ -123,7 +123,7 @@ First push may take a few minutes.
 
 ## Step 7 — Get your submission link
 
-1. Open `https://hub.docker.com/r/YOUR_DOCKERHUB_USERNAME/inventory-api`
+1. Open https://hub.docker.com/r/ishitamax/inventory-api
 2. Set the repository to **Public** (Settings → visibility)
 3. Submit this URL in your assignment
 
@@ -198,4 +198,4 @@ docker build -t YOUR_DOCKERHUB_USERNAME/inventory-api:latest ./backend
 docker push YOUR_DOCKERHUB_USERNAME/inventory-api:latest
 ```
 
-**Submission:** `https://hub.docker.com/r/YOUR_DOCKERHUB_USERNAME/inventory-api`
+**Submission:** https://hub.docker.com/r/ishitamax/inventory-api
