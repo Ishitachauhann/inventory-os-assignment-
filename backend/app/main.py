@@ -1,3 +1,5 @@
+import logging
+import time
 from contextlib import asynccontextmanager
 
 from fastapi import FastAPI
@@ -9,10 +11,26 @@ from app.config import settings
 from app.database import Base, engine
 from app.routers import customers, dashboard, orders, products
 
+logger = logging.getLogger(__name__)
+
 
 @asynccontextmanager
 async def lifespan(_: FastAPI):
-    Base.metadata.create_all(bind=engine)
+    last_error = None
+    for attempt in range(1, 11):
+        try:
+            Base.metadata.create_all(bind=engine)
+            logger.info("Database connected and tables ready")
+            break
+        except Exception as exc:
+            last_error = exc
+            logger.warning("Database not ready (attempt %s/10): %s", attempt, exc)
+            time.sleep(3)
+    else:
+        raise RuntimeError(
+            "Could not connect to PostgreSQL. Set DATABASE_URL to your Render "
+            "Postgres **Internal** connection string."
+        ) from last_error
     yield
 
 

@@ -58,16 +58,18 @@ From the **project root** (folder that contains `backend/`):
 cd /path/to/inventary-order_and_managemnet_system-
 ```
 
-Replace `YOUR_DOCKERHUB_USERNAME` with your real Docker Hub username:
+Replace `YOUR_DOCKERHUB_USERNAME` with your real Docker Hub username.
+
+**Important (Render / most clouds):** Build for `linux/amd64`. On Apple Silicon Macs, Docker defaults to `arm64`, which Render rejects.
 
 ```bash
-docker build -t YOUR_DOCKERHUB_USERNAME/inventory-api:latest ./backend
+docker build --platform linux/amd64 -t YOUR_DOCKERHUB_USERNAME/inventory-api:latest ./backend
 ```
 
 **Example:**
 
 ```bash
-docker build -t ishitachauhan/inventory-api:latest ./backend
+docker build --platform linux/amd64 -t ishitamax/inventory-api:latest ./backend
 ```
 
 Wait until the build finishes without errors.
@@ -166,7 +168,7 @@ Same idea: deploy from Docker image + attach managed Postgres + set `DATABASE_UR
 ## Tagging versions (optional)
 
 ```bash
-docker build -t YOUR_DOCKERHUB_USERNAME/inventory-api:1.0.0 ./backend
+docker build --platform linux/amd64 -t YOUR_DOCKERHUB_USERNAME/inventory-api:1.0.0 ./backend
 docker push YOUR_DOCKERHUB_USERNAME/inventory-api:1.0.0
 docker push YOUR_DOCKERHUB_USERNAME/inventory-api:latest
 ```
@@ -182,6 +184,7 @@ docker push YOUR_DOCKERHUB_USERNAME/inventory-api:latest
 | Build fails on `libpq` | Build from `./backend` (Dockerfile installs `libpq-dev`) |
 | API runs but DB errors | Set `DATABASE_URL` to a reachable Postgres (not included in the image) |
 | Push is very slow | Normal on first upload; later pushes are smaller |
+| Render: invalid platform | Rebuild with `--platform linux/amd64` (Mac M1/M2/M3 builds `arm64` by default) |
 
 ---
 
@@ -192,7 +195,7 @@ docker push YOUR_DOCKERHUB_USERNAME/inventory-api:latest
 docker login
 
 # 2. Build (from project root)
-docker build -t YOUR_DOCKERHUB_USERNAME/inventory-api:latest ./backend
+docker build --platform linux/amd64 -t YOUR_DOCKERHUB_USERNAME/inventory-api:latest ./backend
 
 # 3. Push
 docker push YOUR_DOCKERHUB_USERNAME/inventory-api:latest

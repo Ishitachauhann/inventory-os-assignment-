@@ -47,9 +47,10 @@ cd inventary-order_and_managemnet_system-
 
 docker login
 
-docker build -t YOUR_DOCKERHUB_USERNAME/inventory-api:latest ./backend
+# Required for Render (linux/amd64) — especially on Apple Silicon Macs
+docker build --platform linux/amd64 -t ishitamax/inventory-api:latest ./backend
 
-docker push YOUR_DOCKERHUB_USERNAME/inventory-api:latest
+docker push ishitamax/inventory-api:latest
 ```
 
 ### 1.3 Make repository public
@@ -83,13 +84,17 @@ More detail: [DOCKER_HUB.md](./DOCKER_HUB.md)
 
 ### 2.3 Deploy backend from Docker Hub
 
+> **Errors on Render?** See [RENDER_FIX.md](./RENDER_FIX.md)
+
 1. **New +** → **Web Service**
 2. Choose **Deploy an existing image from a registry**
-3. Image URL:
+3. Image URL (copy exactly — no extra characters):
 
    ```
    docker.io/ishitamax/inventory-api:latest
    ```
+
+4. Credential: **No credential** (public image)
 
 4. Name: `inventory-api`
 5. Region: closest to you
@@ -253,6 +258,7 @@ Backend:    https://your-api.onrender.com
 | Frontend shows network error | Wrong `VITE_API_URL`; redeploy Vercel |
 | Empty data after deploy | New database — add products/customers again |
 | Docker Hub push denied | `docker login` with correct username in image tag |
+| Invalid platform on Render | Rebuild with `docker build --platform linux/amd64` and push again |
 
 ---
 
